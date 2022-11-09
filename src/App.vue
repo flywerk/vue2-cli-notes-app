@@ -5,14 +5,11 @@
 				<div class="container">
 					<div id="app">
 						<h1>{{ title }}</h1>
-
+						<!-- warning message -->
 						<message v-if="message" :message="message" />
-						<!-- new note -->
-						<div class="new-note">
-							<input v-model="note.title" type="text" name="" id="" />
-							<textarea v-model="note.description"></textarea>
-							<button @click="addNote">New note</button>
-						</div>
+
+						<newNote :note="note" @addNote="addNote" />
+
 						<!-- note list -->
 						<div class="notes">
 							<div class="note" v-for="(note, index) in notes" :key="index">
@@ -34,9 +31,11 @@
 
 <script>
 import message from "@/components/Message.vue"
+import newNote from "@/components/NewNote.vue"
 export default {
 	components: {
 		message,
+		newNote,
 	},
 	data() {
 		return {
